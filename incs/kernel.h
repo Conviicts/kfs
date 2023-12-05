@@ -4,8 +4,6 @@
 #include "vga.h"
 
 typedef struct s_tty {
-	char			tty[10][256][256];
-	int				tty_count;
 	unsigned long	columns[10];
 	unsigned long	rows[10];
 	unsigned long	row;

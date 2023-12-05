@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:45:31 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/05 02:20:56 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/05 03:00:34 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 t_tty g_tty = {};
 
 void	init_term() {
-	g_tty.tty_count = 0;
 	g_tty.row = 0;
 	g_tty.column = 0;
 	g_tty.color = VGA_LIGHT_GREY | VGA_BLACK << 4;
@@ -29,7 +28,6 @@ void	init_term() {
 		for (unsigned long x = 0; x < VGA_WIDTH; x++) {
 			unsigned long i = y * VGA_WIDTH + x;
 			g_tty.buffer[i] = ' ' | g_tty.color << 8;
-			g_tty.tty[g_tty.tty_count][x][y] = ' ';
 		}
 	}
 }
@@ -37,6 +35,6 @@ void	init_term() {
 int	main(void) {
 	init_term();
 	khello();
-	kputstr("coucou");
+	kputstr("Hello World !\n");
 	return (0);
 }
