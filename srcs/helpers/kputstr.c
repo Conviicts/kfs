@@ -6,13 +6,13 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 00:42:03 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/05 02:18:38 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/05 21:17:39 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "kernel.h"
 
 void kputstr(const char *s) {
-	for (unsigned long i = 0; i < kstrlen(s); i++)
+	for (ulong i = 0; i < kstrlen(s); i++)
 		kputchar(s[i]);
 }
