@@ -6,7 +6,7 @@
 #    By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 20:57:26 by jode-vri          #+#    #+#              #
-#    Updated: 2023/12/05 02:26:02 by jode-vri         ###   ########.fr        #
+#    Updated: 2023/12/06 03:43:27 by jode-vri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,23 @@ NAME		=	kfs
 ISO			=	$(NAME).iso
 
 CC			=	gcc
-CFLAGS		+=	-m32 -nostdlib -nodefaultlibs -fno-builtin -fno-exceptions -fno-stack-protector -Wall -Wextra -g3
+CFLAGS		+=	-m32 -nostdlib -nodefaultlibs -fno-builtin -fno-exceptions -fno-stack-protector -Wall -Wextra -Werror -g3
 
 NASM		=	nasm
 NASM_FLAGS	=	-f elf32 -g -F dwarf
 
 LD			=	ld
-LINKER		=	srcs/arch/i386/linker.ld
+LINKER		=	kernel/arch/i386/linker.ld
 
-HEADERS		=	incs
+HEADERS		=	include
 ISO_DIR		=	iso
 
-BOOT		=	srcs/arch/i386/boot.asm
-BOOT_OBJ	=	srcs/arch/i386/boot.o
+BOOT		=	kernel/arch/i386/boot.asm
+BOOT_OBJ	=	kernel/arch/i386/boot.o
 
-SRCS		=	$(shell find srcs -type f -name '*.c')
-SRCS_ASM	=	$(shell find srcs/arch/i386/ -type f -name '*.s')
+SRCS		=	$(shell find kernel -type f -name '*.c')
+SRCS		+=	$(shell find libk -type f -name '*.c')
+SRCS_ASM	=	$(shell find kernel/arch/i386/ -type f -name '*.s')
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 OBJS		+=	$(patsubst %.asm,%.o,$(SRCS_ASM))
@@ -61,6 +62,9 @@ iso:
 	@echo "Creating the $(ISO) file"
 	@grub-file --is-x86-multiboot $(ISO_DIR)/boot/$(NAME)
 	@grub-mkrescue -o $(ISO) --compress=xz $(ISO_DIR)
+
+run:
+	qemu-system-i386 -cdrom $(ISO)
 
 clean:
 	@echo "Cleaning Objs ..."

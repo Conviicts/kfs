@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kernel.h                                           :+:      :+:    :+:   */
+/*   tty.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:18:26 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/05 21:18:27 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/06 03:52:47 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KERNEL_H
-#define KERNEL_H
+#ifndef _KERNEL_TTY_H
+#define _KERNEL_TTY_H
 
-#include "vga.h"
+#include "defines.h"
+#include "libk.h"
 
-#define ulong unsigned long
-#define uchar unsigned char
-#define ushort unsigned short
-
-typedef struct s_tty {
-	ulong	columns[10];
-	ulong	rows[10];
-	ulong	row;
-	ulong	column;
-	uchar	color;
-	ushort	*buffer;
-}	t_tty;
-extern t_tty g_tty;
-
-void			init_term();
-void			khello(void);
-ulong			kstrlen(const char *s);
-void			kputchar(const char c);
-void			kputstr(const char *s);
+void tty_initialize(void);
+void tty_putchar(char c);
+void tty_write(const char* data, size_t size);
+void tty_writestring(const char* data);
 
 #endif

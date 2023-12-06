@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kputstr.c                                          :+:      :+:    :+:   */
+/*   libk.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 00:42:03 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/05 21:17:39 by jode-vri         ###   ########.fr       */
+/*   Created: 2023/12/06 03:27:08 by jode-vri          #+#    #+#             */
+/*   Updated: 2023/12/06 03:45:34 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "kernel.h"
+#ifndef LIBK_H
+# define LIBK_H
 
-void kputstr(const char *s) {
-	for (ulong i = 0; i < kstrlen(s); i++)
-		kputchar(s[i]);
-}
+#define size_t unsigned long
+
+size_t	strlen(const char *s);
+
+int		putchar(int c);
+void	putstr(const char *s);
+
+#endif
