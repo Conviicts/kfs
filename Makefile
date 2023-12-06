@@ -6,7 +6,7 @@
 #    By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 20:57:26 by jode-vri          #+#    #+#              #
-#    Updated: 2023/12/06 03:43:27 by jode-vri         ###   ########.fr        #
+#    Updated: 2023/12/06 14:45:23 by jode-vri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ OBJS		+=	$(patsubst %.asm,%.o,$(SRCS_ASM))
 	@$(NASM) -f elf32 -g -F dwarf $< -o $@
 
 all: boot $(OBJS) linker iso
+
+build: boot $(OBJS) linker
 
 boot:	$(BOOT)
 	echo "Creating $(BOOT_OBJ)..."

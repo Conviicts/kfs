@@ -6,12 +6,15 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:18:28 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/06 03:01:39 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:15:36 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _ARCH_I386_VGA_H
 #define _ARCH_I386_VGA_H
+
+#define VGA_WIDTH 80
+#define VGA_HEIGHT 25
 
 enum vga_color {
 	VGA_COLOR_BLACK = 0,
