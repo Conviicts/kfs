@@ -19,6 +19,7 @@ size_t	strlen(const char *s);
 
 int		putchar(int c);
 void	putstr(const char *s);
+int     printf(const char* restrict format, ...);
 
 int		isdigit(int c);
 int		isalpha(int c);
