@@ -13,7 +13,7 @@
 #ifndef LIBK_H
 #define LIBK_H
 
-#include "defines.h"
+#include <defines.h>
 
 size_t	strlen(const char *s);
 

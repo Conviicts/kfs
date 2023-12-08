@@ -13,9 +13,9 @@
 #ifndef _KERNEL_TTY_H
 #define _KERNEL_TTY_H
 
-#include "defines.h"
-#include "libk.h"
-#include "vga.h"
+#include <defines.h>
+#include <libk.h>
+#include <vga.h>
 
 typedef struct	s_tty
 {
