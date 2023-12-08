@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "kernel/tty.h"
-#include "vga.h"
+#include <kernel/tty.h>
+#include <vga.h>
 
 t_tty	tty;
 

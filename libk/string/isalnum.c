@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libk.h"
+#include <libk.h>
 
 int isalnum(int c) {
 	return (isalpha(c) || isdigit(c));

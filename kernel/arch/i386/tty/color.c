@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "kernel/tty.h"
+#include <kernel/tty.h>
 
 void	tty_color(uint8_t color) {
 	tty.color = color;
