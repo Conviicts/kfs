@@ -6,20 +6,17 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 01:59:00 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/09 01:59:14 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:25:03 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libk.h>
 
-void	*memset(void *b, int c, unsigned int len) {
-	unsigned int	i;
+void	*memset(void *s, int c, unsigned int n) {
+	uint32_t	i;
 
-	i = 0;
-	while (i < len)
-    {
-		((char *)(b))[i] = c;
-        i++;
-    }
-	return b;
+	i = -1;
+	while (++i < n)
+		((char *)(s))[i] = c;
+	return s;
 }
