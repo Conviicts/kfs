@@ -6,12 +6,13 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:45:31 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/08 23:55:25 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/09 13:26:14 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/tty.h>
 #include <kernel/gdt.h>
+#include <kernel/idt.h>
 #include <libk.h>
 
 void	print_centered(const char *s) {
@@ -36,13 +37,16 @@ void	print_intro(void) {
 	print_centered("| /    ^   /       \\  |    |  \\  |     \\  /        \\ |");
 	print_centered("| \\____   |\\_______ \\ |____|__ \\ \\___  / /_______  / |");
 	print_centered("|      |__|        \\/         \\/     \\/ jode-vri \\/  |");
-	print_centered("------------------------------------------------------\n");
+	print_centered("------------------------------------------------------");
+	putchar('\n');
+	tty.column = 0;
 	tty_color(vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK));
 }
 
 void	kmain(void) {
 	tty_initialize();
 	init_gdt();
+	init_idt();
 	print_intro();
-	printf("%s\n", "natsu le pd");
+	init_keyboard();
 }
