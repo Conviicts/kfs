@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 17:07:00 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/07 17:18:08 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/09 01:55:01 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@
 #define GDT_DATA_PL0 SEG_DESCTYPE(1) | SEG_PRES(1) | SEG_SAVL(0) | \
                      SEG_LONG(0)     | SEG_SIZE(1) | SEG_GRAN(1) | \
                      SEG_PRIV(0)     | SEG_DATA_RDWR
+
+#define GDT_STACK_PL0 SEG_DESCTYPE(1) | SEG_PRES(1) | SEG_SAVL(0) | \
+                     SEG_LONG(0)     | SEG_SIZE(1) | SEG_GRAN(1) | \
+                     SEG_PRIV(0)     | SEG_DATA_RDWREXPD
  
 #define GDT_CODE_PL3 SEG_DESCTYPE(1) | SEG_PRES(1) | SEG_SAVL(0) | \
                      SEG_LONG(0)     | SEG_SIZE(1) | SEG_GRAN(1) | \
@@ -56,6 +60,10 @@
 #define GDT_DATA_PL3 SEG_DESCTYPE(1) | SEG_PRES(1) | SEG_SAVL(0) | \
                      SEG_LONG(0)     | SEG_SIZE(1) | SEG_GRAN(1) | \
                      SEG_PRIV(3)     | SEG_DATA_RDWR
+
+#define GDT_STACK_PL3 SEG_DESCTYPE(1) | SEG_PRES(1) | SEG_SAVL(0) | \
+                     SEG_LONG(0)     | SEG_SIZE(1) | SEG_GRAN(1) | \
+                     SEG_PRIV(3)     | SEG_DATA_RDWREXPD
 
 // Structure for a GDT (Global Descriptor Table) segment descriptor
 struct gdt_entry {
