@@ -6,7 +6,7 @@
 #    By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 20:57:26 by jode-vri          #+#    #+#              #
-#    Updated: 2023/12/06 14:45:23 by jode-vri         ###   ########.fr        #
+#    Updated: 2023/12/09 02:34:37 by jode-vri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ BOOT_OBJ	=	kernel/arch/i386/boot.o
 
 SRCS		=	$(shell find kernel -type f -name '*.c')
 SRCS		+=	$(shell find libk -type f -name '*.c')
-SRCS_ASM	=	$(shell find kernel/arch/i386/ -type f -name '*.s')
+SRCS_ASM	=	$(shell find kernel/arch/i386/asm -type f -name '*.asm')
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 OBJS		+=	$(patsubst %.asm,%.o,$(SRCS_ASM))
