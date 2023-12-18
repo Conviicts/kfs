@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 09:52:28 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 09:53:37 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:56:13 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 unsigned char inb(uint16_t port);
 
 /** outb:
- *  Sends the given data to the given I/O port. Defined in io.s
+ *  Sends the given data to the given I/O port. Defined in io.asm
  *
  *  @param port The I/O port to send the data to
  *  @param data The data to send to the I/O port
