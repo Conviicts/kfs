@@ -6,11 +6,11 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:29:04 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 14:56:24 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:01:40 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <keyboard.h>
+#include <kernel/interrupts/keyboard.h>
 #include <kernel/io.h>
 
 uint8_t ascii_table[256] = {

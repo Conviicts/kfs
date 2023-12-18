@@ -6,7 +6,7 @@
 #    By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 20:57:26 by jode-vri          #+#    #+#              #
-#    Updated: 2023/12/18 14:18:08 by jode-vri         ###   ########.fr        #
+#    Updated: 2023/12/18 15:00:10 by jode-vri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ LINKER		=	kernel/arch/i386/linker.ld
 HEADERS		=	include
 ISO_DIR		=	iso
 
-BOOT		=	kernel/arch/i386/boot.asm
-BOOT_OBJ	=	kernel/arch/i386/boot.o
+BOOT		=	kernel/arch/i386/boot/boot.asm
+BOOT_OBJ	=	kernel/arch/i386/boot/boot.o
 
 SRCS		=	$(shell find kernel -type f -name '*.c')
 SRCS		+=	$(shell find libk -type f -name '*.c')

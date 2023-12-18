@@ -6,14 +6,14 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:07:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 14:55:00 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:01:50 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/io.h>
 #include <kernel/interrupts/pic.h>
 #include <kernel/interrupts/idt.h>
-#include <keyboard.h>
+#include <kernel/interrupts/keyboard.h>
 #include <libk.h>
 
 t_idt_entry	idt[256];
