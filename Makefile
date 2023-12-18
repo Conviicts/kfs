@@ -6,7 +6,7 @@
 #    By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 20:57:26 by jode-vri          #+#    #+#              #
-#    Updated: 2023/12/18 07:31:38 by jode-vri         ###   ########.fr        #
+#    Updated: 2023/12/18 14:18:08 by jode-vri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,16 +30,16 @@ BOOT_OBJ	=	kernel/arch/i386/boot.o
 
 SRCS		=	$(shell find kernel -type f -name '*.c')
 SRCS		+=	$(shell find libk -type f -name '*.c')
-SRCS_ASM	=	$(shell find kernel/arch/i386/asm -type f -name '*.asm')
+SRCS_ASM	=	$(shell find kernel/arch/i386 -type f -name '*.s')
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
-OBJS		+=	$(patsubst %.asm,%.o,$(SRCS_ASM))
+OBJS		+=	$(patsubst %.s,%.o,$(SRCS_ASM))
 
 %.o: %.c $(HFILES)
 	@echo "Creating $@ ..."
 	@$(CC) -m32 $(CFLAGS) -I$(HEADERS) -c $< -o $@
 
-%.o: %.asm
+%.o: %.s
 	@echo "Creating $@ ..."
 	@$(NASM) $(NASM_FLAGS) $< -o $@
 
@@ -48,8 +48,8 @@ all: boot $(OBJS) linker iso
 build: boot $(OBJS) linker
 
 boot:	$(BOOT)
-	echo "Creating $(BOOT_OBJ)..."
-	$(NASM) -f elf32 $(BOOT) -o $(BOOT_OBJ)
+	@echo "Creating $(BOOT_OBJ)..."
+	@$(NASM) -f elf32 $(BOOT) -o $(BOOT_OBJ)
 
 linker: $(LINKER) $(BOOT_OBJ) $(OBJS)
 	@echo "Linking ..."
@@ -62,11 +62,10 @@ iso:
 	@cp $(NAME) $(ISO_DIR)/boot
 	@cp grub.cfg $(ISO_DIR)/boot/grub
 	@echo "Creating the $(ISO) file"
-	@grub-file --is-x86-multiboot $(ISO_DIR)/boot/$(NAME)
 	@grub-mkrescue -o $(ISO) --compress=xz $(ISO_DIR)
 
 run:
-	qemu-system-i386 -cdrom $(ISO)
+	@qemu-system-i386 -cdrom $(ISO)
 
 clean:
 	@echo "Cleaning Objs ..."

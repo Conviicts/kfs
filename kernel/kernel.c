@@ -6,12 +6,13 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:45:31 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 09:01:30 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:22:49 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/tty.h>
 #include <kernel/gdt.h>
+#include <kernel/interrupts/idt.h>
 #include <libk.h>
 
 void	print_centered(const char *s) {
@@ -45,5 +46,6 @@ void	print_intro(void) {
 void	kmain(void) {
 	tty_initialize();
 	init_gdt();
+	init_idt();
 	print_intro();
 }

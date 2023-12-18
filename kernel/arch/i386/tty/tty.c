@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:59:33 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 10:01:02 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:55:49 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void tty_move_cursor(unsigned short pos) {
 	outb(0x3D4, 14);
 	outb(0x3D5, ((pos >> 8) & 0x00FF));
 	outb(0x3D4, 15);
-  	outb(0x3D5, pos & 0x00FF);
+	outb(0x3D5, pos & 0x00FF);
 }
 
 void	tty_putentryat(char c, uint8_t color, size_t x, size_t y) {

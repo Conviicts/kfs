@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:18:26 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/06 15:15:39 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:51:57 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 #include <libk.h>
 #include <vga.h>
 
-typedef struct	s_tty
-{
+typedef struct	s_tty {
 	size_t		row;
 	size_t		column;
 	uint8_t		color;

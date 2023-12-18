@@ -6,12 +6,12 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 09:52:28 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 09:56:13 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:51:47 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IO_H
-# define IO_H
+#define IO_H
 
 #include <defines.h>
 
