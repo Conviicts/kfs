@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:59:33 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 14:55:49 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:23:52 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,17 @@ static void	tty_printchar(char c) {
 }
 
 static void	tty_newline() {
-	if (tty.row == VGA_HEIGHT)
-		tty.row = 0;
+	size_t pos;
+
+	if (tty.row == VGA_HEIGHT) {
+		tty_initialize();
+		print_intro();
+	}
 	else
 		tty.row++;
 	tty.column = 0;
+	pos = tty.row * VGA_WIDTH + tty.column;
+	tty_move_cursor(pos);
 }
 
 void tty_putchar(char c) {
@@ -51,5 +57,6 @@ void tty_putchar(char c) {
 		tty_printchar(c);
 	} else if (c == '\n') {
 		tty_newline();
+		putstr("kfs> ");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:18:26 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 14:51:57 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:19:55 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ extern t_tty	tty;
 
 void tty_initialize(void);
 void tty_clear(t_tty *t);
+
+void print_intro(void);
 
 void tty_color(uint8_t color);
 void tty_putchar(char c);
