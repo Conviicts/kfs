@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:29:04 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 15:01:40 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:53:54 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ uint8_t ascii_table[256] = {
 	'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',		// 32 - 39
 	'\'', '`', 0x0, '\\', 'z', 'x', 'c', 'v',	// 40 - 47
 	'b', 'n', 'm', ',', '.', '/', 0x0, '*',		// 48 - 55
-	0x0, ' ', 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,		// 56 - 63
+	0x0, ' ', 0x0, -1, -2, -3, -4, 0x0,			// 56 - 63
 	0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, '7',		// 64 - 71
 	'8', '9', '-', '4', '5', '6', '+', '1',		// 72 - 79
 	'2', '3', '0', '.'							// 80 - 83
@@ -31,6 +31,6 @@ uint8_t	keyboard_read(void) {
 	return inb(KEYBOARD_DATA_PORT);
 }
 
-uint8_t	keybord_get_char(uint8_t code) {
+uint8_t	keyboard_get_char(uint8_t code) {
 	return ascii_table[code];
 }

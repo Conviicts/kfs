@@ -6,20 +6,22 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 02:59:34 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/06 15:16:10 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:13:39 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/tty.h>
 #include <vga.h>
 
-t_tty	tty;
+t_tty		tty[4];
+uint16_t	cur_tty = 0;
+uint16_t	*vga_buffer;
 
 void tty_draw(t_tty *t) {
 	for (size_t y = 0; y < VGA_HEIGHT; ++y) {
 		for (size_t x = 0; x < VGA_WIDTH; ++x) {
 			const size_t i = y * VGA_WIDTH + x;
-			t->vga_buffer[i] = t->screen[i];
+			vga_buffer[i] = t->screen[i];
 		}
 	}
 }
@@ -36,7 +38,7 @@ void tty_clear(t_tty *t) {
 }
 
 void tty_initialize(void) {
-	tty.color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
-	tty.vga_buffer = (uint16_t *)0xB8000;
-	tty_clear(&tty);
+	tty[cur_tty].color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
+	vga_buffer = (uint16_t *)0xB8000;
+	tty_clear(&tty[cur_tty]);
 }

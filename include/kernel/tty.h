@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:18:26 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 15:19:55 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:14:10 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ typedef struct	s_tty {
 	uint8_t		color;
 	
 	uint16_t	screen[VGA_WIDTH * VGA_HEIGHT];
-	uint16_t	*vga_buffer;
 }				t_tty;
-extern t_tty	tty;
+extern t_tty	tty[4];
+extern uint16_t	cur_tty;
+extern uint16_t	*vga_buffer;
 
 void tty_initialize(void);
 void tty_clear(t_tty *t);
+void tty_draw(t_tty *t);
 
 void print_intro(void);
+void tty_move_cursor(unsigned short pos);
+void tty_switch_screen(int screen);
 
 void tty_color(uint8_t color);
 void tty_putchar(char c);

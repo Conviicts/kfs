@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 03:27:08 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/09 02:36:10 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 15:52:09 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ size_t	strlen(const char *s);
 
 int		putchar(int c);
 void	putstr(const char *s);
+void	putnbr(int nb);
 int     printf(const char* restrict format, ...);
 
 int		isdigit(int c);

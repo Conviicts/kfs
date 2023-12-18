@@ -6,11 +6,12 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:07:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 15:01:50 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:18:54 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/io.h>
+#include <kernel/tty.h>
 #include <kernel/interrupts/pic.h>
 #include <kernel/interrupts/idt.h>
 #include <kernel/interrupts/keyboard.h>
@@ -29,8 +30,10 @@ void interrupt_handler(struct cpu_state cpu, uint32_t interrupt, struct stack_st
 		case 33:
 			code = keyboard_read();
 			if (code <= 83) {
-				c = keybord_get_char(code);
-				if (c)
+				c = keyboard_get_char(code);
+				if (c >= 252 && c <= 255)
+					tty_switch_screen(c);
+				else
 					putchar(c);	
 			}
 			pic_acknowledge(interrupt);
