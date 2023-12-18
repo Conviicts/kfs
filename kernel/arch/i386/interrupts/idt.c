@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:07:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:18:54 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/18 16:36:12 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void interrupt_handler(struct cpu_state cpu, uint32_t interrupt, struct stack_st
 			code = keyboard_read();
 			if (code <= 83) {
 				c = keyboard_get_char(code);
-				if (c >= 252 && c <= 255)
+				if (c >= 252)
 					tty_switch_screen(c);
 				else
 					putchar(c);	
