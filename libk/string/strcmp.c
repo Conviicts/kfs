@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kfs.h                                              :+:      :+:    :+:   */
+/*   strcmp.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 17:23:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 18:23:51 by jode-vri         ###   ########.fr       */
+/*   Created: 2023/12/19 17:45:48 by jode-vri          #+#    #+#             */
+/*   Updated: 2023/12/19 17:45:55 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KFS_H
-#define KFS_H
+#include <libk.h>
 
-#include <defines.h>
+int		strcmp(const char *s1, const char *s2) {
+	int	i = 0;
 
-void	shell(void);
-
-#endif
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}

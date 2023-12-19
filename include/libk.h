@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 03:27:08 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:34:31 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:46:19 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		isalpha(int c);
 
 int		isalnum(int c);
 int		isprint(int c);
+
+int		strcmp(const char *s1, const char *s2);
 
 void	*memset(void *b, int c, unsigned int len);
 

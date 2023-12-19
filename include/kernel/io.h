@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 09:52:28 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 10:18:11 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:10:06 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,7 @@ unsigned char inb(uint16_t port);
  *              I/O operations, and use this function responsibly.
  */
 void outb(uint16_t port, uint8_t data);
+
+void outw(uint16_t port, uint16_t value);
 
 #endif

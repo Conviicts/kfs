@@ -1,20 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   kfs.h                                              :+:      :+:    :+:   */
+/*   io.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 17:23:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 18:23:51 by jode-vri         ###   ########.fr       */
+/*   Created: 2023/12/19 18:23:18 by jode-vri          #+#    #+#             */
+/*   Updated: 2023/12/19 18:23:32 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KFS_H
-#define KFS_H
+#include <kernel/io.h>
 
-#include <defines.h>
-
-void	shell(void);
-
-#endif
+void	outw(uint16_t port, uint16_t value) {
+    asm("outw %1, %0" : : "dN" (port), "a" (value));
+}
