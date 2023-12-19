@@ -6,13 +6,13 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 08:50:24 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 15:28:20 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:43:21 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/gdt.h>
 
-t_gdt_entry gdt_entries[7];
+t_gdt_entry gdt_entries[GDT_SIZE];
 t_gdt_ptr   gdt_ptr;
 
 static void create_entry(int index, uint32_t base, uint32_t limit, uint8_t access, uint8_t granularity) {
@@ -25,7 +25,7 @@ static void create_entry(int index, uint32_t base, uint32_t limit, uint8_t acces
 }
 
 void    init_gdt() {
-	gdt_ptr.limit = (sizeof(t_gdt_entry) * 7) - 1;
+	gdt_ptr.limit = (sizeof(t_gdt_entry) * GDT_SIZE) - 1;
 	gdt_ptr.base  = (uint32_t)&gdt_entries;
 
 	create_entry(0, 0, 0, 0, 0);                // Null segment
