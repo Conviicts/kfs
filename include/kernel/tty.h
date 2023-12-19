@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 21:18:26 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:14:10 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:47:47 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void tty_initialize(void);
 void tty_clear(t_tty *t);
 void tty_draw(t_tty *t);
 
-void print_intro(void);
+void print_intro(int shell);
 void tty_move_cursor(unsigned short pos);
 void tty_switch_screen(int screen);
 

@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 13:45:31 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:33:04 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:47:58 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	kmain(void) {
 	tty_initialize();
 	init_gdt();
 	init_idt();
-	print_intro();
-	putstr("kfs> ");
+	print_intro(1);
 	printk("Hello %s, %d, %c, %s, %d\n", "world", 42, 'c', "test", 123);
 }

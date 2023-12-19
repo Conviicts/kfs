@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:56:59 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:18:37 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:48:20 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	tty_switch_screen(int screen) {
 	}
 	if (tty[cur_tty].column == 0) {
 		tty_initialize();
-		print_intro();
-		putstr("kfs> ");
+		print_intro(1);
 	}
 	else {
 		tty_draw(&tty[cur_tty]);

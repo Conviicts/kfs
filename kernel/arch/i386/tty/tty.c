@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:59:33 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:14:19 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 10:50:10 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static void	tty_printchar(char c) {
 static void	tty_newline() {
 	size_t pos;
 
-	if (tty[cur_tty].row == VGA_HEIGHT) {
+	if (tty[cur_tty].row == VGA_HEIGHT - 1) {
 		tty_initialize();
-		print_intro();
+		print_intro(0);
 	}
 	else
 		tty[cur_tty].row++;
