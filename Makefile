@@ -6,7 +6,7 @@
 #    By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/02 20:57:26 by jode-vri          #+#    #+#              #
-#    Updated: 2023/12/18 15:00:10 by jode-vri         ###   ########.fr        #
+#    Updated: 2023/12/19 17:25:05 by jode-vri         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		=	kfs
 ISO			=	$(NAME).iso
 
 CC			=	gcc
-CFLAGS		+=	 -nostdlib -nodefaultlibs -fno-builtin -fno-exceptions -fno-stack-protector -Wall -Wextra -g3
+CFLAGS		+=	 -nostdlib -nodefaultlibs -fno-builtin -fno-exceptions -fno-stack-protector -Wall -Wextra -Werror -g3
 
 NASM		=	nasm
 NASM_FLAGS	=	-f elf32

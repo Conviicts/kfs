@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:07:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 11:24:19 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 16:14:00 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,11 @@ void interrupt_handler(struct cpu_state cpu, uint32_t interrupt, struct stack_st
 	(void)cpu;
 	(void)stack;
 	uint8_t code;
-	uint8_t c;
 
 	switch (interrupt) {
 		case 33:
 			code = keyboard_read();
-			if (code <= 83) {
-				c = keyboard_get_char(code);
-				if (c >= 252)
-					tty_switch_screen(c);
-				else
-					putchar(c);	
-			}
+			handle_keypress(code);
 			pic_acknowledge(interrupt);
 		default:
 			break;

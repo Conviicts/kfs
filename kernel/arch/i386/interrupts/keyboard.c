@@ -6,31 +6,92 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:29:04 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 15:53:54 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:12:20 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <kernel/interrupts/keyboard.h>
+#include <kernel/tty.h>
 #include <kernel/io.h>
+#include <libk.h>
 
-uint8_t ascii_table[256] = {
-	0x0, 0x0, '1', '2', '3', '4', '5', '6',		// 0 - 7
-	'7', '8', '9', '0', '-', '=', 0x0, 0x0,		// 8 - 15
-	'q', 'w', 'e', 'r', 't', 'y', 'u', 'i',		// 16 - 23
-	'o', 'p', '[', ']', '\n', 0x0, 'a', 's',	// 24 - 31
-	'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',		// 32 - 39
-	'\'', '`', 0x0, '\\', 'z', 'x', 'c', 'v',	// 40 - 47
-	'b', 'n', 'm', ',', '.', '/', 0x0, '*',		// 48 - 55
-	0x0, ' ', 0x0, -1, -2, -3, -4, 0x0,			// 56 - 63
-	0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, '7',		// 64 - 71
-	'8', '9', '-', '4', '5', '6', '+', '1',		// 72 - 79
-	'2', '3', '0', '.'							// 80 - 83
+t_keyboard_state	keyboard_state;
+
+char qwerty_table[128] = {
+	0x0, 0x0, '1', '2', '3', '4', '5', '6',
+	'7', '8', '9', '0', '-', '=', '\b', '\t',
+	'q','w','e','r','t','y','u','i',
+	'o','p','[',']','\n', -2, 'a', 's',
+	'd', 'f', 'g', 'h', 'j', 'k', 'l', ';',
+	'\'', '`', -1, '\\', 'z', 'x', 'c', 'v',
+	'b', 'n', 'm', ',', '.', '/', -1, '*',
+	0,' ', -3, -4, -5, -6, -7, 0x0,
+	0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
+	0x0, 0x0, '-', 0x0, 0, 0x0, '+', 0x0,
+	0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
+	0x0, 0x0
+};
+
+char qwerty_shift_table[128] = {
+	0, 0, '!', '@', '#', '$', '%', '^', '&',
+	'*', '(', ')', '_', '+', '\b', 0, 'Q',
+	'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O',
+	'P', '{', '}', '\n', 0, 'A', 'S', 'D',
+	'F', 'G', 'H', 'J', 'K', 'L', ':', '\"',
+	'~', 0, '|', 'Z', 'X', 'C', 'V', 'B',
+	'N', 'M', '<', '>', '?', 0, '*', 0,
+	' ', 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, '7', '8',
+	'9', '-', '4', '5', '6', '+', '1', '2',
+	'3', '0', '.', '6', 0, 0, 0, 0, 0
 };
 
 uint8_t	keyboard_read(void) {
-	return inb(KEYBOARD_DATA_PORT);
+	uint16_t	code;
+	char		*table;
+
+	code = inb(KEYBOARD_DATA_PORT);
+	table = qwerty_table;
+	if (code & 0x80) {
+		switch (table[code ^ 0x80]) {
+			case -1:
+				keyboard_state.shift = 0;
+				break;
+			case -2:
+				keyboard_state.ctrl = 0;
+				break;
+		}
+	} else {
+		outb(KEYBOARD_DATA_PORT, 0);
+		if (code > 128)
+			return (0);
+		switch (table[code]) {
+			case -1:
+				keyboard_state.shift = 1;
+				break;
+			case -2:
+				keyboard_state.ctrl = 1;
+				break;
+			case -3:
+				//TODO: handle caps lock
+				break;
+		}
+	}
+	return (code);
 }
 
-uint8_t	keyboard_get_char(uint8_t code) {
-	return ascii_table[code];
+void	handle_keypress(uint8_t code) {
+	char	c;
+
+	if (code == 0 || code > 128)
+		return ;
+	if (code >= 59 && code <= 62){
+		keyboard_state.c = -42;
+		tty_switch_screen(code);
+	}
+	if (keyboard_state.shift)
+		c = qwerty_shift_table[code];
+	else
+		c = qwerty_table[code];
+	keyboard_state.c = c;
 }
