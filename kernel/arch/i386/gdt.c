@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 08:50:24 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 10:43:21 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:13:01 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ void    init_gdt() {
 	gdt_ptr.limit = (sizeof(t_gdt_entry) * GDT_SIZE) - 1;
 	gdt_ptr.base  = (uint32_t)&gdt_entries;
 
-	create_entry(0, 0, 0, 0, 0);                // Null segment
-	create_entry(1, 0, 0xFFFFF, 0x9A, 0xCF);    // Kernel Code segment
-	create_entry(2, 0, 0xFFFFF, 0x92, 0xCF);    // Kernel Data segment
-	create_entry(2, 0, 0xFFFFF, 0x96, 0xCF);    // Kernel Stack segment
-	create_entry(4, 0, 0xFFFFF, 0xFA, 0xCF);    // User Code segment
-	create_entry(5, 0, 0xFFFFF, 0xF2, 0xCF);    // User Data segment
-	create_entry(6, 0, 0xFFFFF, 0xF6, 0xCF);    // User Stack segment
+	create_entry(0, 0, 0, 0, 0);                		// Null segment
+	create_entry(1, 0, 0xFFFFF, GDT_CODE_PL0, 0xCF);    // Kernel Code segment
+	create_entry(2, 0, 0xFFFFF, GDT_DATA_PL0, 0xCF);    // Kernel Data segment
+	create_entry(2, 0, 0xFFFFF, GDT_STACK_PL0, 0xCF);   // Kernel Stack segment
+
+	create_entry(4, 0, 0xFFFFF, GDT_CODE_PL3, 0xCF);    // User Code segment
+	create_entry(5, 0, 0xFFFFF, GDT_DATA_PL3, 0xCF);    // User Data segment
+	create_entry(6, 0, 0xFFFFF, GDT_STACK_PL3, 0xCF);   // User Stack segment
+
 	gdt_flush((uint32_t)&gdt_ptr);
 }
