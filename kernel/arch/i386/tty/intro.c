@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 15:19:10 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 10:48:14 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:05:01 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	print_intro(int shell) {
 	print_centered("| \\____   |\\_______ \\ |____|__ \\ \\___  / /_______  / |");
 	print_centered("|      |__|        \\/         \\/     \\/ jode-vri \\/  |");
 	print_centered("------------------------------------------------------");
-	putchar('\n');
+	tty_color(vga_entry_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLACK));
+	printk("shell: %d\n", cur_tty + 1);
 	tty[cur_tty].column = 0;
 	tty_color(vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK));
 	if (shell)
