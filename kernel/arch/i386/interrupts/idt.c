@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:07:13 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:36:12 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:24:19 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	init_idt(void) {
 	idt_ptr.size = (sizeof(t_idt_entry) * 256);
 	idt_ptr.address = (uint32_t)&idt;
 
+	for (uint8_t vector = 0; vector < 32; vector++) {
+        create_descriptor(vector, (uint32_t)isr_stub_table[vector]);
+    }
 	create_descriptor(33, (uint32_t)interrupt_handler_33);
 
 	load_idt((int)&idt_ptr);

@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:07:33 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 10:25:52 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:21:10 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct __attribute__((packed)) idt_ptr {
 	uint16_t	size;
 	uint32_t	address;
 } t_idt_ptr;
+
+extern void	*isr_stub_table[];
 
 /**
  * @brief       Load the Interrupt Descriptor Table (IDT) using the provided IDT pointer.
