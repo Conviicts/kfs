@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 02:59:34 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/18 16:13:39 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/19 20:26:35 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void tty_clear(t_tty *t) {
 
 void tty_initialize(void) {
 	tty[cur_tty].color = vga_entry_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
+	memset(tty[cur_tty].buffer, 0, sizeof(tty[cur_tty].buffer));
 	vga_buffer = (uint16_t *)0xB8000;
 	tty_clear(&tty[cur_tty]);
 }
