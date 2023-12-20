@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:29:04 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 17:12:20 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:06:56 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ uint8_t	keyboard_read(void) {
 				keyboard_state.ctrl = 1;
 				break;
 			case -3:
-				//TODO: handle caps lock
+				keyboard_state.caps_lock = !keyboard_state.caps_lock;
 				break;
 		}
 	}
@@ -89,7 +89,7 @@ void	handle_keypress(uint8_t code) {
 		keyboard_state.c = -42;
 		tty_switch_screen(code);
 	}
-	if (keyboard_state.shift)
+	if (keyboard_state.shift || keyboard_state.caps_lock)
 		c = qwerty_shift_table[code];
 	else
 		c = qwerty_table[code];
