@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 03:27:08 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 20:21:43 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:20:03 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int		strcmp(const char *s1, const char *s2);
 
 void	*memset(void *b, int c, unsigned int len);
 void	print_memory(const void *addr, size_t size, int upper);
+void    print_kernel(uint32_t addr, int limit);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jode-vri <jode-vri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 17:22:25 by jode-vri          #+#    #+#             */
-/*   Updated: 2023/12/19 19:09:56 by jode-vri         ###   ########.fr       */
+/*   Updated: 2023/12/23 19:29:10 by jode-vri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ static void run(void) {
 			good = inb(0x64);
 		outb(0x64, 0xFE);
 		asm("hlt");
+	} else if (strcmp(tty[cur_tty].buffer, "stack") == 0) {
+		int esp;
+		int ebp;
+		asm("mov %%esp, %0" : "=r"(esp) ::);
+		asm("mov %%ebp, %0" : "=r"(ebp) ::);
+		print_kernel(esp, ebp - esp);
 	} else {
 		printk("kfs: command not found: %s\n", tty[cur_tty].buffer);
 	}
